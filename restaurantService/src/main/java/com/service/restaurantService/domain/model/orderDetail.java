@@ -1,0 +1,34 @@
+package com.service.restaurantService.domain.model;
+
+import java.math.BigDecimal;
+
+public class orderDetail {
+    private Integer id;
+    private Integer orderId;
+    private java.util.UUID dishId;
+    private Integer quantity;
+    private BigDecimal unitPrice;
+    private BigDecimal unitCost;
+    private BigDecimal subtotal;
+    private java.util.UUID promotionId;
+    private java.math.BigDecimal discountPercentage;
+
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+    public Integer getOrderId() { return orderId; }
+    public void setOrderId(Integer orderId) { this.orderId = orderId; }
+    public java.util.UUID getDishId() { return dishId; }
+    public void setDishId(java.util.UUID dishId) { this.dishId = dishId; }
+    public Integer getQuantity() { return quantity; }
+    public void setQuantity(Integer quantity) { this.quantity = quantity; }
+    public BigDecimal getUnitPrice() { return unitPrice; }
+    public void setUnitPrice(BigDecimal unitPrice) { this.unitPrice = unitPrice; }
+    public BigDecimal getUnitCost() { return unitCost; }
+    public void setUnitCost(BigDecimal unitCost) { this.unitCost = unitCost; }
+    public BigDecimal getSubtotal() { return subtotal; }
+    public void setSubtotal(BigDecimal subtotal) { this.subtotal = subtotal; }
+    public java.util.UUID getPromotionId() { return promotionId; }
+    public void setPromotionId(java.util.UUID promotionId) { this.promotionId = promotionId; }
+    public java.math.BigDecimal getDiscountPercentage() { return discountPercentage; }
+    public void setDiscountPercentage(java.math.BigDecimal discountPercentage) { this.discountPercentage = discountPercentage; }
+}
