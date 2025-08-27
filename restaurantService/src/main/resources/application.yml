@@ -1,0 +1,33 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+  sql:
+    init:
+      mode: never
+
+# Choose ONE of the security modes by activating a profile
+# 1) JWT via JWK Set URI from AuthIdentityService (profile: jwt)
+
+---
+security:
+  enabled: false
+#spring:
+#  config:
+#    activate:
+#      on-profile: jwt
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          jwk-set-uri: http://localhost:8080/auth/.well-known/jwks.json

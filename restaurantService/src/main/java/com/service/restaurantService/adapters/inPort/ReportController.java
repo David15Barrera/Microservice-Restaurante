@@ -1,5 +1,9 @@
 package com.service.restaurantService.adapters.inPort;
 
+import com.service.restaurantService.adapters.outPort.persistance.entity.OrderDetailEntity;
+import com.service.restaurantService.adapters.outPort.persistance.entity.OrderEntity;
+import com.service.restaurantService.adapters.outPort.persistance.repository.OrderDetailJpaRepository;
+import com.service.restaurantService.adapters.outPort.persistance.repository.OrderJpaRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class orderDetail {
     private Integer id;
     private Integer orderId;
-    private java.util.UUID dishId;
+    private Integer dishId;
     private Integer quantity;
     private BigDecimal unitPrice;
     private BigDecimal unitCost;
@@ -17,8 +17,8 @@ public class orderDetail {
     public void setId(Integer id) { this.id = id; }
     public Integer getOrderId() { return orderId; }
     public void setOrderId(Integer orderId) { this.orderId = orderId; }
-    public java.util.UUID getDishId() { return dishId; }
-    public void setDishId(java.util.UUID dishId) { this.dishId = dishId; }
+    public Integer getDishId() { return dishId; }
+    public void setDishId(Integer dishId) { this.dishId = dishId; }
     public Integer getQuantity() { return quantity; }
     public void setQuantity(Integer quantity) { this.quantity = quantity; }
     public BigDecimal getUnitPrice() { return unitPrice; }

@@ -6,7 +6,7 @@ import java.util.UUID;
 public class OrderDetailResponse {
     public Integer id;
     public Integer orderId;
-    public UUID dishId;
+    public Integer dishId;
     public Integer quantity;
     public BigDecimal unitPrice;
     public BigDecimal unitCost;

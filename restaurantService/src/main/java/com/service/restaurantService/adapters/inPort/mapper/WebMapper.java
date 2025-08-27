@@ -4,6 +4,7 @@ package com.service.restaurantService.adapters.inPort.mapper;
 import com.service.restaurantService.adapters.inPort.dto.*;
 import com.service.restaurantService.domain.model.dish;
 import com.service.restaurantService.domain.model.order;
+import com.service.restaurantService.domain.model.orderDetail;
 import com.service.restaurantService.domain.model.restaurant;
 
 public class WebMapper {
@@ -74,8 +75,8 @@ public class WebMapper {
         return resp;
     }
 
-    public static OrderDetail toDomain(OrderDetailRequest d) {
-        OrderDetail x = new OrderDetail();
+    public static orderDetail toDomain(OrderDetailRequest d) {
+        orderDetail x = new orderDetail();
         x.setOrderId(d.orderId);
         x.setDishId(d.dishId);
         x.setQuantity(d.quantity);
@@ -87,7 +88,7 @@ public class WebMapper {
         return x;
     }
 
-    public static OrderDetailResponse toResponse(OrderDetail d) {
+    public static OrderDetailResponse toResponse(orderDetail d) {
         OrderDetailResponse resp = new OrderDetailResponse();
         resp.id = d.getId();
         resp.orderId = d.getOrderId();

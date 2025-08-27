@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class OrderDetailRequest {
     @NotNull public Integer orderId;
-    public UUID dishId;
+    public Integer dishId;
     @NotNull public Integer quantity;
     @NotNull public BigDecimal unitPrice;
     @NotNull public BigDecimal unitCost;
