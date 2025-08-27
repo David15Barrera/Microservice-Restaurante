@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: ${SERVER_PORT:8092}
 
 spring:
   datasource:
@@ -20,8 +20,16 @@ spring:
 # 1) JWT via JWK Set URI from AuthIdentityService (profile: jwt)
 
 ---
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
 security:
-  enabled: false
+  jwt:
+    secret: ${JWT_SECRET:change-this-super-long-secret-please-change-me-0123456789}
+    validity-ms: ${JWT_VALIDITY_MS:3600000}
 #spring:
 #  config:
 #    activate:
