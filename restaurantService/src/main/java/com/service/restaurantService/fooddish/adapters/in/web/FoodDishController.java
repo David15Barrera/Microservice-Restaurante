@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.stream.Collectors;
-@RestController @RequestMapping("/api/dishes") public class FoodDishController {
+@RestController
+@RequestMapping("/api/dishes")
+public class FoodDishController {
     private final FoodDishService service;
 
     public FoodDishController(FoodDishService service){
         this.service=service;
     }
+
     @PostMapping
     @PreAuthorize("hasAuthority('SCOPE_dish.write') or hasRole('ADMIN')")
     public ResponseEntity<FoodDishResponse> create(@Valid @RequestBody FoodDishRequest req) {
@@ -30,8 +33,11 @@ import java.util.stream.Collectors;
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('SCOPE_dish.read') or hasRole('ADMIN')")
-    public ResponseEntity<FoodDishResponse> get(@PathVariable java.util.UUID id){
-        return service.get(id).map(FoodDishMapper::toResponse).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<FoodDishResponse> get(@PathVariable Integer id) {
+        return service.get(id)
+                .map(FoodDishMapper::toResponse)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping
@@ -56,7 +62,7 @@ import java.util.stream.Collectors;
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('SCOPE_dish.write') or hasRole('ADMIN')")
-    public ResponseEntity<Void> delete(@PathVariable java.util.UUID id){
+    public ResponseEntity<Void> delete(@PathVariable Integer id){
         service.delete(id);
         return ResponseEntity.noContent().build();
     }

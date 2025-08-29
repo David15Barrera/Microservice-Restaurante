@@ -3,6 +3,7 @@ package com.service.restaurantService.fooddish.adapters.out.persistence;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -26,6 +27,8 @@ public class FoodDishEntity {
 
     @Column(name="created_at")
     private java.time.LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
 
     public Integer getId(){
         return id;
@@ -73,5 +76,16 @@ public class FoodDishEntity {
 
     public void setCreatedAt(java.time.LocalDateTime t){
         this.createdAt=t;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        updatedAt = LocalDateTime.now();
     }
 }

@@ -8,8 +8,8 @@ import java.util.UUID;
 
 public interface FoodDishRepositoryPort {
     FoodDish save(FoodDish d);
-    Optional<FoodDish> findById(UUID id);
+    Optional<FoodDish> findById(Integer id);
     List<FoodDish> findByRestaurantId(UUID restaurantId);
     List<FoodDish> findAll();
-    void deleteById(UUID id);
+    void deleteById(int id);
 }

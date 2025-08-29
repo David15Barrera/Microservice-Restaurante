@@ -19,7 +19,7 @@ public class FoodDishService {
         return repo.save(d);
     }
 
-    public Optional<FoodDish> get(UUID id){
+    public Optional<FoodDish> get(Integer id){
         return repo.findById(id);
     }
 
@@ -35,7 +35,7 @@ public class FoodDishService {
         return repo.save(d);
     }
 
-    public void delete(UUID id){
+    public void delete(int id){
         repo.deleteById(id);
     }
 }

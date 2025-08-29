@@ -45,7 +45,7 @@ public class FoodDishRepositoryAdapter implements FoodDishRepositoryPort {
     }
 
     @Override
-    public Optional<FoodDish> findById(UUID id){
+    public Optional<FoodDish> findById(Integer id) {
         return jpa.findById(id).map(FoodDishRepositoryAdapter::toDomain);
     }
 
@@ -60,7 +60,7 @@ public class FoodDishRepositoryAdapter implements FoodDishRepositoryPort {
     }
 
     @Override
-    public void deleteById(UUID id){
+    public void deleteById(int id){
         jpa.deleteById(id);
     }
 }
