@@ -3,6 +3,7 @@ package com.service.restaurantService.order.adapters.out.persistence;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.UUID;
 @Entity @Table(name="orders")
 public class OrderEntity {
@@ -28,9 +29,11 @@ public class OrderEntity {
     @Column(name="promotion_id", columnDefinition="uuid")
     private UUID promotionId;
 
-    @Column(name="created_at")
-    private java.time.LocalDateTime createdAt;
 
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
     // getters/setters
     public Integer getId(){
         return id;
@@ -86,5 +89,16 @@ public class OrderEntity {
 
     public void setPromotionId(UUID p){
         this.promotionId=p;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        updatedAt = LocalDateTime.now();
     }
 }
