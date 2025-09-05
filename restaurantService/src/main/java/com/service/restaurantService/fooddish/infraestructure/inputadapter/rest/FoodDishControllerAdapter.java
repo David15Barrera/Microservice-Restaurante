@@ -6,9 +6,11 @@ import com.service.restaurantService.fooddish.infraestructure.inputadapter.dto.F
 import com.service.restaurantService.fooddish.infraestructure.inputadapter.dto.FoodDishResponseDto;
 import com.service.restaurantService.fooddish.infraestructure.inputadapter.mapper.FoodDishMapperRest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -19,17 +21,20 @@ public class FoodDishControllerAdapter {
     private final UpdateFoodDishInputPort updateUseCase;
     private final GetFoodDishByIdInputPort getUseCase;
     private final DeleteFoodDishInputPort deleteUseCase;
+    private final FindFoodDishesByRestaurantInputPort findByRestauranUseCase;
 
     public FoodDishControllerAdapter(ListAllFoodDishInputPort listAllUseCase,
                                      CreateFoodDishInputPort createUseCase,
                                      UpdateFoodDishInputPort updateUseCase,
                                      GetFoodDishByIdInputPort getUseCase,
-                                     DeleteFoodDishInputPort deleteUseCase) {
+                                     DeleteFoodDishInputPort deleteUseCase,
+                                     FindFoodDishesByRestaurantInputPort findByRestauranUseCase) {
         this.listAllUseCase = listAllUseCase;
         this.createUseCase = createUseCase;
         this.updateUseCase = updateUseCase;
         this.getUseCase = getUseCase;
         this.deleteUseCase = deleteUseCase;
+        this.findByRestauranUseCase = findByRestauranUseCase;
     }
 
     @GetMapping
@@ -64,5 +69,14 @@ public class FoodDishControllerAdapter {
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         deleteUseCase.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/by-restaurant/{restaurantId}")
+    public ResponseEntity<List<FoodDishResponseDto>> getByRestaurantId(@PathVariable UUID restaurantId) {
+        List<FoodDishDomainEntity> dishes = findByRestauranUseCase.findByRestaurantId(restaurantId);
+        List<FoodDishResponseDto> response = dishes.stream()
+                .map(FoodDishMapperRest::toResponse)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(response);
     }
 }

@@ -1,6 +1,7 @@
 package com.service.restaurantService.fooddish.infraestructure.outputadapter;
 
 import com.service.restaurantService.fooddish.application.ports.output.DeleteFoodDishOutputPort;
+import com.service.restaurantService.fooddish.application.ports.output.FindFoodDishesByRestaurantOutputPort;
 import com.service.restaurantService.fooddish.application.ports.output.SaveFoodDishOutputPort;
 import com.service.restaurantService.fooddish.domain.model.FoodDishDomainEntity;
 import com.service.restaurantService.fooddish.infraestructure.outputadapter.persistence.entity.FoodDishDBEntity;
@@ -10,12 +11,14 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Component
 public class FoodDishRepositoryOutputAdapter implements
         SaveFoodDishOutputPort,
-        DeleteFoodDishOutputPort {
+        DeleteFoodDishOutputPort,
+        FindFoodDishesByRestaurantOutputPort {
 
     private final FoodDishDBRepository repo;
 
@@ -43,5 +46,13 @@ public class FoodDishRepositoryOutputAdapter implements
     @Override
     public List<FoodDishDomainEntity> findAll() {
         return repo.findAll().stream().map(FoodDishMapper::toDomain).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<FoodDishDomainEntity> findByRestaurantId(UUID restaurantId) {
+        return repo.findByRestaurantId(restaurantId)
+                .stream()
+                .map(FoodDishMapper::toDomain)
+                .collect(Collectors.toList());
     }
 }
