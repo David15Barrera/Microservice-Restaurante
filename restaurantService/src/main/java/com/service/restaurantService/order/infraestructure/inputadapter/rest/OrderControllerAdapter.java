@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -20,17 +21,20 @@ public class OrderControllerAdapter {
     private final GetOrderByIdInputPort getUseCase;
     private final UpdateOrderInputPort updateUseCase;
     private final DeleteOrderInputPort deleteUseCase;
+    private final FindOrdersByRestaurantInputPort findOrdersByRestaurantUseCase;
 
     public OrderControllerAdapter(ListAllOrderInputPort listAllUseCase,
                                   CreateOrderInputPort createUseCase,
                                   GetOrderByIdInputPort getUseCase,
                                   UpdateOrderInputPort updateUseCase,
-                                  DeleteOrderInputPort deleteUseCase) {
+                                  DeleteOrderInputPort deleteUseCase,
+                                  FindOrdersByRestaurantInputPort findOrdersByRestaurantUseCase) {
         this.listAllUseCase = listAllUseCase;
         this.createUseCase = createUseCase;
         this.getUseCase = getUseCase;
         this.updateUseCase = updateUseCase;
         this.deleteUseCase = deleteUseCase;
+        this.findOrdersByRestaurantUseCase = findOrdersByRestaurantUseCase;
     }
 
     @GetMapping
@@ -66,4 +70,14 @@ public class OrderControllerAdapter {
         deleteUseCase.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/by-restaurant/{restaurantId}")
+    public ResponseEntity<List<OrderResponseDto>> getByRestaurantId(@PathVariable UUID restaurantId) {
+        List<OrderDomainEntity> orders = findOrdersByRestaurantUseCase.findByRestaurantId(restaurantId);
+        List<OrderResponseDto> response = orders.stream()
+                .map(OrderMapperRest::toResponse)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(response);
+    }
+
 }
