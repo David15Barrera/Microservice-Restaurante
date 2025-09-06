@@ -14,4 +14,6 @@ public class RestaurantResponseDto {
     public LocalTime openingTime;
     public LocalTime closingTime;
     public OffsetDateTime createdAt;
+
+    public HotelResponse hotel;
 }

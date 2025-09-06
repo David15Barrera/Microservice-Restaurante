@@ -1,6 +1,7 @@
 package com.service.restaurantService.restaurant.infrastructure.inputadapter.mapper;
 
 import com.service.restaurantService.restaurant.domain.model.RestaurantDomainEntity;
+import com.service.restaurantService.restaurant.infrastructure.inputadapter.dto.HotelResponse;
 import com.service.restaurantService.restaurant.infrastructure.inputadapter.dto.RestaurantRequestDto;
 import com.service.restaurantService.restaurant.infrastructure.inputadapter.dto.RestaurantResponseDto;
 
@@ -31,6 +32,18 @@ public class RestaurantMapperRest {
         r.openingTime = d.getOpeningTime();
         r.closingTime = d.getClosingTime();
         r.createdAt = d.getCreatedAt();
+
+        // New logic to map the HotelDomainEntity to HotelResponse
+        if (d.getHotel() != null) {
+            HotelResponse hotelResponse = new HotelResponse();
+            hotelResponse.id = d.getHotel().getId();
+            hotelResponse.name = d.getHotel().getName();
+            hotelResponse.address = d.getHotel().getAddress();
+            hotelResponse.phone = d.getHotel().getPhone();
+            hotelResponse.totalRooms = d.getHotel().getTotalRooms();
+            r.hotel = hotelResponse;
+        }
+
         return r;
     }
 }
