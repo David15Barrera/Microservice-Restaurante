@@ -47,6 +47,9 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
+
+    implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j")
+
 }
 
 dependencyManagement {

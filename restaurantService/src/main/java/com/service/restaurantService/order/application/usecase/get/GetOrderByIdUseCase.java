@@ -7,8 +7,6 @@ import com.service.restaurantService.order.domain.model.CustomerDomainEntity;
 import com.service.restaurantService.order.domain.model.OrderDomainEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class GetOrderByIdUseCase implements GetOrderByIdInputPort {
 

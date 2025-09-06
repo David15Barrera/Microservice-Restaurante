@@ -14,5 +14,5 @@ public class OrderResponseDto {
     public UUID promotionId;
     public OffsetDateTime createdAt;
 
-    private CustomerResponse customer;
+    public CustomerResponse customer;
 }
