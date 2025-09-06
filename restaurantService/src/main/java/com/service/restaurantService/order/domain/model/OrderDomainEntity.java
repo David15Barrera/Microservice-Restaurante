@@ -14,6 +14,7 @@ public class OrderDomainEntity {
     private UUID promotionId;
     private OffsetDateTime createdAt;
 
+    private CustomerDomainEntity customer;
     // getters and setters
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
@@ -27,8 +28,30 @@ public class OrderDomainEntity {
     public void setTotalPrice(BigDecimal totalPrice) { this.totalPrice = totalPrice; }
     public BigDecimal getDiscountPercentage() { return discountPercentage; }
     public void setDiscountPercentage(BigDecimal discountPercentage) { this.discountPercentage = discountPercentage; }
-    public UUID getPromotionId() { return promotionId; }
-    public void setPromotionId(UUID promotionId) { this.promotionId = promotionId; }
-    public OffsetDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(OffsetDateTime createdAt) { this.createdAt = createdAt; }
+
+    public UUID getPromotionId() {
+        return promotionId;
+    }
+
+    public void setPromotionId(UUID promotionId) {
+        this.promotionId = promotionId;
+    }
+
+    public OffsetDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    // Getter para customer
+    public CustomerDomainEntity getCustomer() {
+        return customer;
+    }
+
+    // Setter para customer
+    public void setCustomer(CustomerDomainEntity customer) {
+        this.customer = customer;
+    }
 }

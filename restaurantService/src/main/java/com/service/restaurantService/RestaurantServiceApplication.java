@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.PropertySource;
 
-@EnableFeignClients
+@EnableFeignClients(basePackages = "com.service.restaurantService.order.infraestructure.outputadapter.feign")
 @ConfigurationPropertiesScan
 @PropertySource("file:${user.dir}/.env")
 @SpringBootApplication

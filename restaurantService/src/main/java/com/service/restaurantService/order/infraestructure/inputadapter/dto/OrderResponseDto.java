@@ -13,4 +13,6 @@ public class OrderResponseDto {
     public BigDecimal discountPercentage;
     public UUID promotionId;
     public OffsetDateTime createdAt;
+
+    private CustomerResponse customer;
 }
