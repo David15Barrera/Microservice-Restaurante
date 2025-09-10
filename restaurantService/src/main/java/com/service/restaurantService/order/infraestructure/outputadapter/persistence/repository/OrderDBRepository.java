@@ -8,6 +8,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface OrderDBRepository extends JpaRepository<OrderDBEntity, Integer> {
+public interface OrderDBRepository extends JpaRepository<OrderDBEntity, UUID> {
     List<OrderDBEntity> findByRestaurantId(UUID restaurantId);
 }

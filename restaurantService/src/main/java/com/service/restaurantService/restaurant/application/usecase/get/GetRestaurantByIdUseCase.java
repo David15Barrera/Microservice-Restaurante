@@ -26,10 +26,7 @@ public class GetRestaurantByIdUseCase implements GetRestaurantByIdInputPort {
         RestaurantDomainEntity restaurant = outputPort.findById(id)
                 .orElseThrow(() -> new RuntimeException("Restaurant not found with id: " + id));
 
-        HotelDomainEntity hotel = HotelOutputPort.findById(restaurant.getHotelId());
-
-        restaurant.setHotel(hotel);
-
         return restaurant;
     }
+
 }

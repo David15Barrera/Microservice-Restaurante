@@ -13,21 +13,17 @@ import java.util.UUID;
 public class FindOrdersByRestaurantUseCase implements FindOrdersByRestaurantInputPort {
 
     private final FindOrdersByRestaurantOutputPort outputPort;
-    private final FindCustomerOutputPort customerOutputPort;
 
-    public FindOrdersByRestaurantUseCase(FindOrdersByRestaurantOutputPort outputPort,
-                                         FindCustomerOutputPort customerOutputPort) {
+    public FindOrdersByRestaurantUseCase(FindOrdersByRestaurantOutputPort outputPort
+                                         ) {
         this.outputPort = outputPort;
-        this.customerOutputPort = customerOutputPort;
     }
 
     @Override
     public List<OrderDomainEntity> findByRestaurantId(UUID restaurantId) {
         List<OrderDomainEntity> orders = outputPort.findByRestaurantId(restaurantId);
-        orders.forEach(order -> {
-            order.setCustomer(customerOutputPort.findById(order.getCustomerId()));
-        });
 
         return orders;
     }
+
 }

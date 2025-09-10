@@ -10,8 +10,8 @@ import java.util.UUID;
 @Table(name = "orders")
 public class OrderDBEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(columnDefinition = "uuid")
+    private UUID id;
     private UUID customerId;
     private UUID restaurantId;
     private OffsetDateTime date;
@@ -21,8 +21,8 @@ public class OrderDBEntity {
     private OffsetDateTime createdAt;
 
     // getters and setters
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
     public UUID getCustomerId() { return customerId; }
     public void setCustomerId(UUID customerId) { this.customerId = customerId; }
     public UUID getRestaurantId() { return restaurantId; }

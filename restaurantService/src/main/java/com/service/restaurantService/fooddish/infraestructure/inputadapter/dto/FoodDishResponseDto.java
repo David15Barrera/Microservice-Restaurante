@@ -5,7 +5,7 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 public class FoodDishResponseDto {
-    public Integer id;
+    public UUID id;
     public UUID restaurantId;
     public String name;
     public String description;

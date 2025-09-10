@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface FoodDishDBRepository extends JpaRepository<FoodDishDBEntity, Integer> {
+public interface FoodDishDBRepository extends JpaRepository<FoodDishDBEntity, UUID> {
     List<FoodDishDBEntity> findByRestaurantId(UUID restaurantId);
 
 }

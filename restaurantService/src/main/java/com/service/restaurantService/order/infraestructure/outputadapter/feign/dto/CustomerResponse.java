@@ -1,4 +1,4 @@
-package com.service.restaurantService.order.infraestructure.inputadapter.dto;
+package com.service.restaurantService.order.infraestructure.outputadapter.feign.dto;
 
 public class CustomerResponse {
     public String id;

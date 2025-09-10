@@ -1,6 +1,7 @@
-package com.service.restaurantService.order.infraestructure.outputadapter.feign;
+package com.service.restaurantService.order.infraestructure.outputadapter.feign.CustomerFeign;
 
-import com.service.restaurantService.order.infraestructure.inputadapter.dto.CustomerResponse;
+import com.service.restaurantService.order.infraestructure.outputadapter.feign.dto.CustomerResponse;
+import com.service.restaurantService.order.infraestructure.outputadapter.feign.Fallback.CustomerFeignClientFallbackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

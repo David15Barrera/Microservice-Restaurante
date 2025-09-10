@@ -1,6 +1,7 @@
-package com.service.restaurantService.restaurant.infrastructure.outputadapter.feign;
+package com.service.restaurantService.restaurant.infrastructure.outputadapter.feign.fallback;
 
-import com.service.restaurantService.restaurant.infrastructure.inputadapter.dto.HotelResponse;
+import com.service.restaurantService.restaurant.infrastructure.outputadapter.feign.dto.HotelResponse;
+import com.service.restaurantService.restaurant.infrastructure.outputadapter.feign.HotelFeign.HotelFeignClient;
 import feign.RetryableException;
 import org.springframework.cloud.openfeign.FallbackFactory;
 

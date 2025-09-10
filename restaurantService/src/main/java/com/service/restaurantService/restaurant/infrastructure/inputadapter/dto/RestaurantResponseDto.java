@@ -15,5 +15,9 @@ public class RestaurantResponseDto {
     public LocalTime closingTime;
     public OffsetDateTime createdAt;
 
-    public HotelResponse hotel;
+    public UUID hotelIdResponse;
+    public String hotelName;
+    public String hotelAddress;
+    public String hotelPhone;
+    public Integer hotelTotalRooms;
 }

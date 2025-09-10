@@ -34,12 +34,12 @@ public class FoodDishRepositoryOutputAdapter implements
    }
 
  @Override
- public void deleteById(Integer id) {
+ public void deleteById(UUID id) {
      repo.deleteById(id);
   }
 
     @Override
-    public Optional<FoodDishDomainEntity> findById(Integer id) {
+    public Optional<FoodDishDomainEntity> findById(UUID id) {
         return repo.findById(id).map(FoodDishMapper::toDomain);
     }
 

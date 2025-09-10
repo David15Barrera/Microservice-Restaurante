@@ -4,6 +4,8 @@ import com.service.restaurantService.fooddish.application.ports.input.DeleteFood
 import com.service.restaurantService.fooddish.application.ports.output.DeleteFoodDishOutputPort;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class DeleteFoodDishUseCase implements DeleteFoodDishInputPort {
 
@@ -14,7 +16,7 @@ public class DeleteFoodDishUseCase implements DeleteFoodDishInputPort {
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(UUID id) {
         outputPort.deleteById(id);
     }
 }

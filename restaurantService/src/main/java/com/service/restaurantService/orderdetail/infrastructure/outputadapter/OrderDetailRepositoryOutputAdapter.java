@@ -25,7 +25,18 @@ public class OrderDetailRepositoryOutputAdapter implements SaveOrderDetailOutput
         return OrderDetailMapper.toDomain(saved);
     }
 
-    @Override public void deleteById(Integer id) { repo.deleteById(id); }
-    @Override public Optional<OrderDetailDomainEntity> findById(Integer id) { return repo.findById(id).map(OrderDetailMapper::toDomain); }
-    @Override public List<OrderDetailDomainEntity> findAll() { return repo.findAll().stream().map(OrderDetailMapper::toDomain).collect(Collectors.toList()); }
+    @Override
+    public void deleteById(Integer id) {
+        repo.deleteById(id);
+    }
+
+    @Override
+    public Optional<OrderDetailDomainEntity> findById(Integer id) {
+        return repo.findById(id).map(OrderDetailMapper::toDomain);
+    }
+
+    @Override
+    public List<OrderDetailDomainEntity> findAll() {
+        return repo.findAll().stream().map(OrderDetailMapper::toDomain).collect(Collectors.toList());
+    }
 }

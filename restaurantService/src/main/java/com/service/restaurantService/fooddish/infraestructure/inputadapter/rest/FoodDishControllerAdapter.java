@@ -45,7 +45,7 @@ public class FoodDishControllerAdapter {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FoodDishResponseDto> getById(@PathVariable Integer id) {
+    public ResponseEntity<FoodDishResponseDto> getById(@PathVariable UUID id) {
         FoodDishDomainEntity d = getUseCase.getById(id);
         return ResponseEntity.ok(FoodDishMapperRest.toResponse(d));
     }
@@ -58,7 +58,7 @@ public class FoodDishControllerAdapter {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<FoodDishResponseDto> update(@PathVariable Integer id, @RequestBody FoodDishRequestDto dto) {
+    public ResponseEntity<FoodDishResponseDto> update(@PathVariable UUID id, @RequestBody FoodDishRequestDto dto) {
         FoodDishDomainEntity domain = FoodDishMapperRest.toDomain(dto);
         domain.setId(id);
         FoodDishDomainEntity updated = updateUseCase.update(domain);
@@ -66,7 +66,7 @@ public class FoodDishControllerAdapter {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable UUID id) {
         deleteUseCase.deleteById(id);
         return ResponseEntity.noContent().build();
     }

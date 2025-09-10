@@ -15,6 +15,7 @@ public class OrderDetailMapper {
         d.setUnitCost(e.getUnitCost());
         d.setSubtotal(e.getSubtotal());
         d.setDiscountPercentage(e.getDiscountPercentage());
+        d.setPromotionId(e.getPromotionId());
         d.setCreatedAt(e.getCreatedAt());
         return d;
     }
@@ -29,6 +30,7 @@ public class OrderDetailMapper {
         e.setUnitCost(d.getUnitCost());
         e.setSubtotal(d.getSubtotal());
         e.setDiscountPercentage(d.getDiscountPercentage());
+        e.setPromotionId(d.getPromotionId());
         e.setCreatedAt(d.getCreatedAt());
         return e;
     }

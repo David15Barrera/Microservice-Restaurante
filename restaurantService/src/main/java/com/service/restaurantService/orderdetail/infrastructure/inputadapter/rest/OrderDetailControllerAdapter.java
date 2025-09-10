@@ -2,6 +2,7 @@ package com.service.restaurantService.orderdetail.infrastructure.inputadapter.re
 
 import com.service.restaurantService.orderdetail.application.ports.input.*;
 import com.service.restaurantService.orderdetail.domain.model.OrderDetailDomainEntity;
+import com.service.restaurantService.orderdetail.infrastructure.factory.OrderDetailWithPromotionFactory;
 import com.service.restaurantService.orderdetail.infrastructure.inputadapter.dto.OrderDetailRequestDto;
 import com.service.restaurantService.orderdetail.infrastructure.inputadapter.dto.OrderDetailResponseDto;
 import com.service.restaurantService.orderdetail.infrastructure.inputadapter.mapper.OrderDetailMapperRest;
@@ -20,37 +21,37 @@ public class OrderDetailControllerAdapter {
     private final GetOrderDetailByIdInputPort getByIdUseCase;
     private final ListAllOrderDetailInputPort listAllUseCase;
     private final DeleteOrderDetailInputPort deleteUseCase;
+    private final OrderDetailWithPromotionFactory orderDetailFactory;
 
     public OrderDetailControllerAdapter(CreateOrderDetailInputPort createUseCase,
                                         UpdateOrderDetailInputPort updateUseCase,
                                         GetOrderDetailByIdInputPort getByIdUseCase,
                                         ListAllOrderDetailInputPort listAllUseCase,
-                                        DeleteOrderDetailInputPort deleteUseCase) {
+                                        DeleteOrderDetailInputPort deleteUseCase, OrderDetailWithPromotionFactory orderDetailFactory) {
         this.createUseCase = createUseCase;
         this.updateUseCase = updateUseCase;
         this.getByIdUseCase = getByIdUseCase;
         this.listAllUseCase = listAllUseCase;
         this.deleteUseCase = deleteUseCase;
-    }
-
-    @PostMapping
-    public ResponseEntity<OrderDetailResponseDto> create(@RequestBody OrderDetailRequestDto dto) {
-        OrderDetailDomainEntity domain = OrderDetailMapperRest.toDomain(dto);
-        OrderDetailDomainEntity created = createUseCase.create(domain);
-        return ResponseEntity.ok(OrderDetailMapperRest.toResponse(created));
+        this.orderDetailFactory = orderDetailFactory;
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<OrderDetailResponseDto> getById(@PathVariable Integer id) {
         OrderDetailDomainEntity d = getByIdUseCase.getById(id);
-        return ResponseEntity.ok(OrderDetailMapperRest.toResponse(d));
+        return ResponseEntity.ok(orderDetailFactory.fromDomain(d));
     }
 
     @GetMapping
     public ResponseEntity<List<OrderDetailResponseDto>> listAll() {
         List<OrderDetailDomainEntity> all = listAllUseCase.listAll();
-        List<OrderDetailResponseDto> resp = all.stream().map(OrderDetailMapperRest::toResponse).collect(Collectors.toList());
-        return ResponseEntity.ok(resp);
+        return ResponseEntity.ok(orderDetailFactory.fromDomainList(all));
+    }
+
+    @PostMapping
+    public ResponseEntity<OrderDetailResponseDto> create(@RequestBody OrderDetailRequestDto dto) {
+        OrderDetailDomainEntity created = createUseCase.create(OrderDetailMapperRest.toDomain(dto));
+        return ResponseEntity.ok(orderDetailFactory.fromDomain(created));
     }
 
     @PutMapping("/{id}")
@@ -58,7 +59,7 @@ public class OrderDetailControllerAdapter {
         OrderDetailDomainEntity domain = OrderDetailMapperRest.toDomain(dto);
         domain.setId(id);
         OrderDetailDomainEntity updated = updateUseCase.update(domain);
-        return ResponseEntity.ok(OrderDetailMapperRest.toResponse(updated));
+        return ResponseEntity.ok(orderDetailFactory.fromDomain(updated));
     }
 
     @DeleteMapping("/{id}")

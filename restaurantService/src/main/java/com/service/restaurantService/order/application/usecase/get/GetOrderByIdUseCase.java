@@ -7,6 +7,8 @@ import com.service.restaurantService.order.domain.model.CustomerDomainEntity;
 import com.service.restaurantService.order.domain.model.OrderDomainEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class GetOrderByIdUseCase implements GetOrderByIdInputPort {
 
@@ -21,15 +23,10 @@ public class GetOrderByIdUseCase implements GetOrderByIdInputPort {
 
 
     @Override
-    public OrderDomainEntity getById(Integer id) {
+    public OrderDomainEntity getById(UUID id) {
         OrderDomainEntity order = outputPort.findById(id)
                 .orElseThrow(() -> new RuntimeException("Order not found with id: " + id));
-
-        CustomerDomainEntity customer = customerOutputPort.findById(order.getCustomerId());
-
-        // Enriquecemos la orden con el customer
-        order.setCustomer(customer);
-
+        
         return order;
     }
 }

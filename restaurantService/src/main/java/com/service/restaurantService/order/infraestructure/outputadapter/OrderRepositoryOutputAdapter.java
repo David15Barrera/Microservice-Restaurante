@@ -34,12 +34,12 @@ public class OrderRepositoryOutputAdapter implements
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(UUID id) {
         repo.deleteById(id);
     }
 
     @Override
-    public Optional<OrderDomainEntity> findById(Integer id) {
+    public Optional<OrderDomainEntity> findById(UUID id) {
         return repo.findById(id).map(OrderMapper::toDomain);
     }
 
@@ -48,10 +48,6 @@ public class OrderRepositoryOutputAdapter implements
         return repo.findAll().stream().map(OrderMapper::toDomain).collect(Collectors.toList());
     }
 
-    @Override
-    public void deleteById(Long id) {
-
-    }
 
     @Override
     public List<OrderDomainEntity> findByRestaurantId(UUID restaurantId) {

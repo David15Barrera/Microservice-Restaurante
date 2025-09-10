@@ -5,6 +5,8 @@ import com.service.restaurantService.order.application.ports.output.SaveOrderOut
 import com.service.restaurantService.order.domain.model.OrderDomainEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class CreateOrderUseCase implements CreateOrderInputPort {
 
@@ -16,6 +18,7 @@ public class CreateOrderUseCase implements CreateOrderInputPort {
 
     @Override
     public OrderDomainEntity create(OrderDomainEntity order) {
+        order.setId(UUID.randomUUID());
         return outputPort.save(order);
     }
 }

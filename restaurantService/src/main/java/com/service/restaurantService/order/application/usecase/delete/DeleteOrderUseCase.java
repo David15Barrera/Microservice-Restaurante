@@ -4,6 +4,8 @@ import com.service.restaurantService.order.application.ports.input.DeleteOrderIn
 import com.service.restaurantService.order.application.ports.output.DeleteOrderOutputPort;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class DeleteOrderUseCase implements DeleteOrderInputPort {
 
@@ -14,7 +16,7 @@ public class DeleteOrderUseCase implements DeleteOrderInputPort {
     }
 
     @Override
-    public void deleteById(Integer id) {
-        outputPort.deleteById(Long.valueOf(id));
+    public void deleteById(UUID id) {
+        outputPort.deleteById(id);
     }
 }

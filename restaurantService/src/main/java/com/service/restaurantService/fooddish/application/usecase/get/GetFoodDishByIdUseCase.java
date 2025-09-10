@@ -7,6 +7,7 @@ import com.service.restaurantService.fooddish.domain.model.FoodDishDomainEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @UseCase
@@ -19,7 +20,7 @@ public class GetFoodDishByIdUseCase implements GetFoodDishByIdInputPort {
     }
 
     @Override
-    public FoodDishDomainEntity getById(Integer id) {
+    public FoodDishDomainEntity getById(UUID id) {
         Optional<FoodDishDomainEntity> found = outputPort.findById(id);
         return found.orElse(null);
     }

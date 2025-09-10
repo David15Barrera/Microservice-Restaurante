@@ -2,7 +2,6 @@ package com.service.restaurantService.orderdetail.infrastructure.inputadapter.ma
 
 import com.service.restaurantService.orderdetail.domain.model.OrderDetailDomainEntity;
 import com.service.restaurantService.orderdetail.infrastructure.inputadapter.dto.OrderDetailRequestDto;
-import com.service.restaurantService.orderdetail.infrastructure.inputadapter.dto.OrderDetailResponseDto;
 
 public class OrderDetailMapperRest {
     public static OrderDetailDomainEntity toDomain(OrderDetailRequestDto r) {
@@ -14,20 +13,8 @@ public class OrderDetailMapperRest {
         d.setUnitPrice(r.unitPrice);
         d.setUnitCost(r.unitCost);
         d.setDiscountPercentage(r.discountPercentage);
+        d.setPromotionId(r.promotionId);
         return d;
     }
-    public static OrderDetailResponseDto toResponse(OrderDetailDomainEntity d) {
-        if (d == null) return null;
-        OrderDetailResponseDto r = new OrderDetailResponseDto();
-        r.id = d.getId();
-        r.orderId = d.getOrderId();
-        r.dishId = d.getDishId();
-        r.quantity = d.getQuantity();
-        r.unitPrice = d.getUnitPrice();
-        r.unitCost = d.getUnitCost();
-        r.subtotal = d.getSubtotal();
-        r.discountPercentage = d.getDiscountPercentage();
-        r.createdAt = d.getCreatedAt();
-        return r;
-    }
+
 }

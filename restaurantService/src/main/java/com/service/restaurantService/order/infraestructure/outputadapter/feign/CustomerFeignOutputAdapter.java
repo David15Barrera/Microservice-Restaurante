@@ -1,9 +1,9 @@
-package com.service.restaurantService.order.infraestructure.outputadapter;
+package com.service.restaurantService.order.infraestructure.outputadapter.feign;
 
 import com.service.restaurantService.order.application.ports.output.FindCustomerOutputPort;
 import com.service.restaurantService.order.domain.model.CustomerDomainEntity;
-import com.service.restaurantService.order.infraestructure.inputadapter.dto.CustomerResponse;
-import com.service.restaurantService.order.infraestructure.outputadapter.feign.CustomerFeignClient;
+import com.service.restaurantService.order.infraestructure.outputadapter.feign.dto.CustomerResponse;
+import com.service.restaurantService.order.infraestructure.outputadapter.feign.CustomerFeign.CustomerFeignClient;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

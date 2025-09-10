@@ -6,6 +6,8 @@ import com.service.restaurantService.fooddish.application.ports.output.SaveFoodD
 import com.service.restaurantService.fooddish.domain.model.FoodDishDomainEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @UseCase
 public class CreateFoodDishUseCase implements CreateFoodDishInputPort {
@@ -17,7 +19,8 @@ public class CreateFoodDishUseCase implements CreateFoodDishInputPort {
     }
 
     @Override
-    public FoodDishDomainEntity create(FoodDishDomainEntity dish) {
-        return outputPort.save(dish);
+    public FoodDishDomainEntity create(FoodDishDomainEntity domain) {
+        domain.setId(UUID.randomUUID());
+        return outputPort.save(domain);
     }
 }

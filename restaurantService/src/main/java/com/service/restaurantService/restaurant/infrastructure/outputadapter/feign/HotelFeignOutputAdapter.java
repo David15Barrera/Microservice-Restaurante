@@ -1,9 +1,9 @@
-package com.service.restaurantService.restaurant.infrastructure.outputadapter;
+package com.service.restaurantService.restaurant.infrastructure.outputadapter.feign;
 
 import com.service.restaurantService.restaurant.application.ports.output.FindHotelOutputPort;
 import com.service.restaurantService.restaurant.domain.model.HotelDomainEntity;
-import com.service.restaurantService.restaurant.infrastructure.inputadapter.dto.HotelResponse;
-import com.service.restaurantService.restaurant.infrastructure.outputadapter.feign.HotelFeignClient;
+import com.service.restaurantService.restaurant.infrastructure.outputadapter.feign.dto.HotelResponse;
+import com.service.restaurantService.restaurant.infrastructure.outputadapter.feign.HotelFeign.HotelFeignClient;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

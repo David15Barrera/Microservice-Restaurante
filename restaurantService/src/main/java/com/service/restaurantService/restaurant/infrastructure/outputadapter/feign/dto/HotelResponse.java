@@ -1,4 +1,4 @@
-package com.service.restaurantService.restaurant.infrastructure.inputadapter.dto;
+package com.service.restaurantService.restaurant.infrastructure.outputadapter.feign.dto;
 
 import java.util.UUID;
 

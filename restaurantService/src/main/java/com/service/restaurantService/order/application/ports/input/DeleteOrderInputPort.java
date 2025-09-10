@@ -1,5 +1,7 @@
 package com.service.restaurantService.order.application.ports.input;
 
+import java.util.UUID;
+
 public interface DeleteOrderInputPort {
-    void deleteById(Integer id);
+    void deleteById(UUID id);
 }

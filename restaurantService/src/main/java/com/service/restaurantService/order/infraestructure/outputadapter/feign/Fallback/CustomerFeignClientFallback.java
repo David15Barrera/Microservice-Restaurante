@@ -1,6 +1,7 @@
-package com.service.restaurantService.order.infraestructure.outputadapter.feign;
+package com.service.restaurantService.order.infraestructure.outputadapter.feign.Fallback;
 
-import com.service.restaurantService.order.infraestructure.inputadapter.dto.CustomerResponse;
+import com.service.restaurantService.order.infraestructure.outputadapter.feign.dto.CustomerResponse;
+import com.service.restaurantService.order.infraestructure.outputadapter.feign.CustomerFeign.CustomerFeignClient;
 import org.springframework.stereotype.Component;
 
 @Component
