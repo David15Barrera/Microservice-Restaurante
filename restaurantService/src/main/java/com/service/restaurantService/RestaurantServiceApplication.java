@@ -8,7 +8,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @EnableFeignClients
 @ConfigurationPropertiesScan
-@PropertySource("file:${user.dir}/.env")
+//@PropertySource("file:${user.dir}/.env")
 @SpringBootApplication
 public class RestaurantServiceApplication {
 
