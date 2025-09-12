@@ -1,5 +1,7 @@
 package com.service.restaurantService.orderdetail.infrastructure.outputadapter;
 
+import com.service.restaurantService.order.infraestructure.outputadapter.persistence.mapper.OrderMapper;
+import com.service.restaurantService.orderdetail.application.ports.output.FindOrderDetailByOrderIdOutputPort;
 import com.service.restaurantService.orderdetail.application.ports.output.SaveOrderDetailOutputPort;
 import com.service.restaurantService.orderdetail.domain.model.OrderDetailDomainEntity;
 import com.service.restaurantService.orderdetail.infrastructure.outputadapter.persistence.entity.OrderDetailDBEntity;
@@ -9,10 +11,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Component
-public class OrderDetailRepositoryOutputAdapter implements SaveOrderDetailOutputPort {
+public class OrderDetailRepositoryOutputAdapter implements SaveOrderDetailOutputPort, FindOrderDetailByOrderIdOutputPort {
 
     private final OrderDetailDBRepository repo;
 
@@ -38,5 +41,13 @@ public class OrderDetailRepositoryOutputAdapter implements SaveOrderDetailOutput
     @Override
     public List<OrderDetailDomainEntity> findAll() {
         return repo.findAll().stream().map(OrderDetailMapper::toDomain).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<OrderDetailDomainEntity> findByOrderId(UUID orderId){
+        return repo.findByOrderId(orderId)
+                .stream()
+                .map(OrderDetailMapper::toDomain)
+                .collect(Collectors.toList());
     }
 }
