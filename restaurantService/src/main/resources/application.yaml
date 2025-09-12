@@ -1,5 +1,5 @@
 server:
-  port: server.port=${PORT:8084}
+  port: ${PORT}
   error:
     include-message: always
     include-binding-errors: always
