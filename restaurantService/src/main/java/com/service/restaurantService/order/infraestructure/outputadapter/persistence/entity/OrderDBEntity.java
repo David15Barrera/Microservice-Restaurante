@@ -19,6 +19,7 @@ public class OrderDBEntity {
     private BigDecimal discountPercentage;
     private UUID promotionId;
     private OffsetDateTime createdAt;
+    private String status;
 
     // getters and setters
     public UUID getId() { return id; }
@@ -35,6 +36,19 @@ public class OrderDBEntity {
     public void setDiscountPercentage(BigDecimal discountPercentage) { this.discountPercentage = discountPercentage; }
     public UUID getPromotionId() { return promotionId; }
     public void setPromotionId(UUID promotionId) { this.promotionId = promotionId; }
-    public OffsetDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(OffsetDateTime createdAt) { this.createdAt = createdAt; }
+
+    public OffsetDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String status){
+        this.status = this.status;
+    }
 }

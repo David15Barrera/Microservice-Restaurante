@@ -36,6 +36,7 @@ public class OrderWithCustomerAndPromotionFactory {
         dto.totalPrice = order.getTotalPrice();
         dto.discountPercentage = order.getDiscountPercentage();
         dto.promotionId = order.getPromotionId();
+        dto.status = order.getStatus();
         dto.createdAt = order.getCreatedAt();
 
         if (order.getCustomerId() != null) {

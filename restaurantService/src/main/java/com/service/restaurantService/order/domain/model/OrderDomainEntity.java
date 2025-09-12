@@ -18,6 +18,7 @@ public class OrderDomainEntity {
     private BigDecimal discountPercentage;
     private UUID promotionId;
     private OffsetDateTime createdAt;
+    private String status;
 
     private CustomerDomainEntity customer;
     private PromotionDomainEntity promotion;

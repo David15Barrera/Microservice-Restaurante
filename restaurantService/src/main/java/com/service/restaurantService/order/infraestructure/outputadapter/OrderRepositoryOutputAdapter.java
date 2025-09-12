@@ -1,6 +1,7 @@
 package com.service.restaurantService.order.infraestructure.outputadapter;
 
 import com.service.restaurantService.order.application.ports.output.DeleteOrderOutputPort;
+import com.service.restaurantService.order.application.ports.output.FindOrdersByCustomerOutPort;
 import com.service.restaurantService.order.application.ports.output.FindOrdersByRestaurantOutputPort;
 import com.service.restaurantService.order.application.ports.output.SaveOrderOutputPort;
 import com.service.restaurantService.order.domain.model.OrderDomainEntity;
@@ -18,7 +19,8 @@ import java.util.stream.Collectors;
 public class OrderRepositoryOutputAdapter implements
         SaveOrderOutputPort,
         DeleteOrderOutputPort,
-        FindOrdersByRestaurantOutputPort {
+        FindOrdersByRestaurantOutputPort,
+        FindOrdersByCustomerOutPort {
 
     private final OrderDBRepository repo;
 
@@ -57,4 +59,11 @@ public class OrderRepositoryOutputAdapter implements
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<OrderDomainEntity> findByCustomer(UUID customerId){
+        return repo.findByCustomerId(customerId)
+                .stream()
+                .map(OrderMapper::toDomain)
+                .collect(Collectors.toList());
+    }
 }

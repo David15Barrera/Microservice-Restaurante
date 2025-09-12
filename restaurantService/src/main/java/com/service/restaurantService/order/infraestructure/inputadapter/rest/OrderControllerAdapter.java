@@ -23,6 +23,7 @@ public class OrderControllerAdapter {
     private final UpdateOrderInputPort updateUseCase;
     private final DeleteOrderInputPort deleteUseCase;
     private final FindOrdersByRestaurantInputPort findOrdersByRestaurantUseCase;
+    private final FindOrderByCustomerInputPort findOrderByCustomerInputPort;
     private final OrderWithCustomerAndPromotionFactory orderFactory;
 
     public OrderControllerAdapter(ListAllOrderInputPort listAllUseCase,
@@ -30,13 +31,14 @@ public class OrderControllerAdapter {
                                   GetOrderByIdInputPort getUseCase,
                                   UpdateOrderInputPort updateUseCase,
                                   DeleteOrderInputPort deleteUseCase,
-                                  FindOrdersByRestaurantInputPort findOrdersByRestaurantUseCase, OrderWithCustomerAndPromotionFactory orderFactory) {
+                                  FindOrdersByRestaurantInputPort findOrdersByRestaurantUseCase, FindOrderByCustomerInputPort findOrderByCustomerInputPort, OrderWithCustomerAndPromotionFactory orderFactory) {
         this.listAllUseCase = listAllUseCase;
         this.createUseCase = createUseCase;
         this.getUseCase = getUseCase;
         this.updateUseCase = updateUseCase;
         this.deleteUseCase = deleteUseCase;
         this.findOrdersByRestaurantUseCase = findOrdersByRestaurantUseCase;
+        this.findOrderByCustomerInputPort = findOrderByCustomerInputPort;
         this.orderFactory = orderFactory;
     }
 
@@ -75,6 +77,13 @@ public class OrderControllerAdapter {
     @GetMapping("/by-restaurant/{restaurantId}")
     public ResponseEntity<List<OrderResponseDto>> getByRestaurantId(@PathVariable UUID restaurantId) {
         List<OrderDomainEntity> orders = findOrdersByRestaurantUseCase.findByRestaurantId(restaurantId);
+        List<OrderResponseDto> response = orderFactory.fromDomainList(orders);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/by-customer/{customerId}")
+    public ResponseEntity<List<OrderResponseDto>> getByCustomer(@PathVariable UUID customerId){
+        List<OrderDomainEntity> orders = findOrderByCustomerInputPort.findByCustomer(customerId);
         List<OrderResponseDto> response = orderFactory.fromDomainList(orders);
         return ResponseEntity.ok(response);
     }

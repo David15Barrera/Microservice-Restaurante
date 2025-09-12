@@ -15,6 +15,7 @@ public class OrderMapper {
         d.setDiscountPercentage(e.getDiscountPercentage());
         d.setPromotionId(e.getPromotionId());
         d.setCreatedAt(e.getCreatedAt());
+        d.setStatus(e.getStatus());
         return d;
     }
 
@@ -29,6 +30,7 @@ public class OrderMapper {
         e.setDiscountPercentage(d.getDiscountPercentage());
         e.setPromotionId(d.getPromotionId());
         e.setCreatedAt(d.getCreatedAt());
+        e.setStatus(d.getStatus());
         return e;
     }
 }

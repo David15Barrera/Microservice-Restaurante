@@ -15,6 +15,7 @@ public class OrderMapperRest {
         d.setTotalPrice(dto.totalPrice);
         d.setDiscountPercentage(dto.discountPercentage);
         d.setPromotionId(dto.promotionId);
+        d.setStatus(dto.status);
         d.setDate(OffsetDateTime.now());
         return d;
     }

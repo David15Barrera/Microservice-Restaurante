@@ -10,4 +10,5 @@ import java.util.UUID;
 @Repository
 public interface OrderDBRepository extends JpaRepository<OrderDBEntity, UUID> {
     List<OrderDBEntity> findByRestaurantId(UUID restaurantId);
+    List<OrderDBEntity> findByCustomerId(UUID customerId);
 }

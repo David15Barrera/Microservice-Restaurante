@@ -9,4 +9,5 @@ public class OrderRequestDto {
     public BigDecimal totalPrice;
     public BigDecimal discountPercentage;
     public UUID promotionId;
+    public String status;
 }
