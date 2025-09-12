@@ -13,4 +13,5 @@ public interface HotelFeignClient {
 
     @GetMapping("/api/v1/hotels/{id}")
     HotelResponse getHotelById(@PathVariable("id") UUID id);
+
 }
