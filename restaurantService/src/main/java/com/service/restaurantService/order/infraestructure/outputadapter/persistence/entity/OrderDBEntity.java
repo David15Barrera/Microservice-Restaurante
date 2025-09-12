@@ -49,6 +49,7 @@ public class OrderDBEntity {
         return status;
     }
     public void setStatus(String status){
-        this.status = this.status;
+        this.status = status;
     }
+
 }
